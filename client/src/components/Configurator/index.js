@@ -49,7 +49,7 @@ const Configurator = () =>{
     }, [parts]);
 
     const addComponent = (index) => {
-        window.location.href = `http://localhost:3000/browse/${index}?listid=${listid}`;
+        window.location.href = `/browse/${index}?listid=${listid}`;
     };
 
     const getPartsList = () => {

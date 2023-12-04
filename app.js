@@ -36,7 +36,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false } // set true if HTTPS is used (PRODUCTION)
+    cookie: { secure: true } // set true if HTTPS is used (PRODUCTION)
 }));
 
 
@@ -46,7 +46,7 @@ var GitHubStrategy = require('passport-github').Strategy;
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: "http://localhost:3001/auth/github/callback"
+    callbackURL: "/auth/github/callback"
 },
     function (accessToken, refreshToken, profile, done) {
         return done(null, profile);
@@ -217,7 +217,7 @@ app.get('/auth/github/callback',
         // Successful authentication:
         // res.redirect('/');
         // successful authentication in development:
-        res.redirect('http://localhost:3000');
+        res.redirect('/');
     }
 );
 
@@ -239,7 +239,7 @@ app.get('/logout', function (req, res) {
         // Successful logout:
         // res.redirect('/');
         // successful logout in development:
-        res.redirect('http://localhost:3000');
+        res.redirect('/');
     });
 });
 
@@ -251,13 +251,13 @@ app.get('/favicon.ico', (req, res) =>
     res.sendFile(path.join(__dirname, '/client/build/favicon.ico'))
 );
 
-// app.use(express.static(path.join(__dirname, 'client/build'))); // only in production
+app.use(express.static(path.join(__dirname, 'client/build'))); // only in production
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
-// app.get('*', (req, res) => {
-// 	res.sendFile(path.join(__dirname + '/client/build/index.html'));
-// });
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname + '/client/build/index.html'));
+});
 
 var server = http.createServer(app);
 

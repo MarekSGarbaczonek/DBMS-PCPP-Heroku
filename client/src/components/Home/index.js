@@ -74,7 +74,7 @@ const HomePage = () =>{
 		if (newListName !== '') {
 			setShowListModal(false);
 			const newlistid = await createList();
-			window.location.href = `http://localhost:3000/build/${newlistid}`;
+			window.location.href = `/build/${newlistid}`;
 		}
 	}
 
@@ -106,7 +106,7 @@ const HomePage = () =>{
 	const handleNewListClick = async () => {
 		const loggedIn = localStorage.getItem('username');
 		if (!loggedIn) {
-			window.location.href = 'http://localhost:3001/auth/github';
+			window.location.href = '/auth/github';
 		}
 		else {
 			setShowListModal(true);

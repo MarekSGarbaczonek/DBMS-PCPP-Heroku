@@ -57,11 +57,11 @@ class Header extends Component {
 							<div className="nav-container right-nav">
 								{username ? (
 									<div className="github">
-										<a href="http://localhost:3001/logout" className="btn btn-danger" onClick={() => localStorage.removeItem('username')}>Log Out</a>
+										<a href="/logout" className="btn btn-danger" onClick={() => localStorage.removeItem('username')}>Log Out</a>
 										<span>{username}</span>
 									</div>
 								) : (
-									<a href="http://localhost:3001/auth/github" className="github github-signin">
+									<a href="/auth/github" className="github github-signin">
 										<FontAwesomeIcon icon={faGithub} className="fa-2xl"/>
 										<span>Sign in with GitHub</span>
 									</a>
