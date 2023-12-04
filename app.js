@@ -22,7 +22,7 @@ const partsController = require("./controllers/partsController");
 const leaderboardController = require("./controllers/leaderboardController");
 
 app.set('port', process.env.PORT || 3001);
-app.use(favicon(__dirname + '/public/images/favicon.png'));
+// app.use(favicon(__dirname + '/public/images/favicon.png'));
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
