@@ -6,13 +6,11 @@
 }
 
 .ListsContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
     background-color: var(--background-c);
     gap: 2rem;
-    flex-wrap: wrap;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--card-size), max-content));
+    justify-content: center;
 }
   
 .card-body {
@@ -40,6 +38,7 @@
     justify-content: center;
     align-items: center;
     cursor: default;
+    margin-left: 2rem;
 }
 
 .card-button {
@@ -129,11 +128,12 @@
 }
 
 .logged-out-card {
-    margin-top: 0rem;
+    margin: 0rem;
     width: 40rem;
     height: var(--card-size);
     font-size: x-large;
     color: var(--text-c);
+    margin-right: -2rem;
 }
 
 .card-delete {
